@@ -1,6 +1,6 @@
 Name: javax.activation
 Version: 1.2.0
-Release: 1
+Release: 2
 Group: Development/Java
 Summary: An implementation of the javax.activation API
 Source0: https://repo1.maven.org/maven2/com/sun/activation/javax.activation/%{version}/javax.activation-%{version}-sources.jar
@@ -20,6 +20,14 @@ An implementation of the javax.activation API
 . %{_sysconfdir}/profile.d/90java.sh
 export PATH=$JAVA_HOME/bin:$PATH
 
+cat >module-info.java <<'EOF'
+module java.activation {
+	exports javax.activation;
+
+	requires java.logging;
+	requires java.desktop;
+}
+EOF
 find . -name "*.java" |xargs javac
 find . -name "*.class" -o -name "*.properties" |xargs jar cf javax.activation-%{version}.jar META-INF
 cp %{S:1} .
@@ -27,7 +35,6 @@ cp %{S:1} .
 %install
 mkdir -p %{buildroot}%{_javadir} %{buildroot}%{_mavenpomdir}
 cp javax.activation-%{version}.jar %{buildroot}%{_javadir}
-ln -s javax.activation-%{version}.jar %{buildroot}%{_javadir}/javax.activation.jar
 cp *.pom %{buildroot}%{_mavenpomdir}/
 %add_maven_depmap javax.activation-%{version}.pom javax.activation-%{version}.jar
 
