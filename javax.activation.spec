@@ -14,11 +14,11 @@ BuildArch: noarch
 An implementation of the javax.activation API
 
 %package javadoc
-Summary: Javadoc documentation for javax.inject
+Summary: Javadoc documentation for javax.activation
 Group: Development/Java
 
 %description javadoc
-Javadoc documentation for javax.inject
+Javadoc documentation for javax.activation
 
 %prep
 %autosetup -p1 -c %{name}-%{version}
