@@ -1,6 +1,6 @@
 Name: javax.activation
 Version: 1.2.0
-Release: 4
+Release: 5
 Group: Development/Java
 Summary: An implementation of the javax.activation API
 Source0: https://repo1.maven.org/maven2/com/sun/activation/javax.activation/%{version}/javax.activation-%{version}-sources.jar
